@@ -36,17 +36,17 @@ public class TestSort {
         }
     }
 
-    public static void Main() {
-        IntSorter sorter = new InsertionSorter();
+    //public static void Main() {
+    //    IntSorter sorter = new InsertionSorter();
         
-        int firstN = 10000;
+    //    int firstN = 10000;
         
-        Console.WriteLine("Unordered:");
-        testSort(sorter, firstN, false);
-        Console.WriteLine("\nOrdered:");
-        testSort(sorter, firstN, true);
+    //    Console.WriteLine("Unordered:");
+    //    testSort(sorter, firstN, false);
+    //    Console.WriteLine("\nOrdered:");
+    //    testSort(sorter, firstN, true);
 
-        Console.WriteLine("\n"+sorter.GetType().Name+".sort tested ok!");
-        Environment.Exit(0);
-    }
+    //    Console.WriteLine("\n"+sorter.GetType().Name+".sort tested ok!");
+    //    Environment.Exit(0);
+    //}
 }

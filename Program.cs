@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            MergeSorter mergeSort = new MergeSorter();
+            mergeSort.Upg1a();
+
         }
     }
 }
