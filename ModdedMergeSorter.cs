@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 
 
-
-    internal class MergeSorter : IntSorter
+    internal class ModdedMergeSorter : IntSorter
     {
         int[] copyArr;
+        int M = 100;
 
 
         public int[] MergeSort(int[] arr, int high, int low)
@@ -17,8 +17,26 @@ using System.Threading.Tasks;
             if (low < high)
             {
                 int mid = (high + low) / 2;
-                MergeSort(arr, mid, low); //Vänster subarray
-                MergeSort(arr, high, mid + 1); //Höger subarray
+
+                if (mid - low <= M)
+                {
+                    InsertionSort(arr, mid, low);
+                }
+                else
+                {
+                    MergeSort(arr, mid, low); //Vänster subarray
+
+                }
+
+                if (high - (mid+1) <= M)
+                {
+                    InsertionSort(arr, high, mid + 1);
+                }
+                else
+                {
+                    MergeSort(arr, high, mid + 1); //Höger subarray
+
+                }
 
                 Merge(arr, high, low, mid + 1);
             }
@@ -51,9 +69,6 @@ using System.Threading.Tasks;
                     arr[i] = copyArr[posR];
                     posR++;
                 }
-
-
-
             }
 
             while (posL <= endOfLeft)
@@ -74,7 +89,22 @@ using System.Threading.Tasks;
         public void Sort(int[] a)
         {
             copyArr = new int[a.Length];
-            MergeSort(a, a.Length-1, 0);
+            MergeSort(a, a.Length - 1, 0);
 
+        }
+
+        public void InsertionSort(int[] a, int high, int low)
+        {
+            int N = high + 1;
+
+            for (int i = low; i < N; i++)
+            {
+                for (int j = i; j > low && a[j] < a[j - 1]; j--)
+                {
+                    int x = a[j];
+                    a[j] = a[j - 1];
+                    a[j - 1] = x;
+                }
+            }
         }
     }
